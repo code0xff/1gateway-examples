@@ -8,6 +8,24 @@ Failed calls (any 4xx/5xx) are never charged.
 - OpenAPI: https://1gateway.dev/openapi.json · llms.txt: https://1gateway.dev/llms.txt
 - Remote MCP: `https://1gateway.dev/mcp` · Status and uptime: https://1gateway.dev/status
 
+## Agent skills (skills.sh / ClawHub format)
+
+Three ready-made skills in [`skills/`](skills). Each is remote, no install needed: the skill only tells the agent
+how to call the hosted API with an x402 client (`npx agentcash fetch`, `npx awal x402 pay` or `@x402/fetch`).
+
+| Skill | What | Price (USDC/call) |
+|---|---|---|
+| [`hwp-remote-to-markdown`](skills/hwp-remote-to-markdown/SKILL.md) | HWP/HWPX (also PDF, DOCX, HTML) to Markdown | $0.0027–$0.009 |
+| [`korea-data`](skills/korea-data/SKILL.md) | Apartment trades, holidays, weather, trade stats, Bank of Korea ECOS | $0.0027–$0.0045 |
+| [`base-token-risk`](skills/base-token-risk/SKILL.md) | Base ERC-20 token safety check: honeypot and rug-pull signals | $0.009 |
+
+```bash
+npx skills add code0xff/1gateway-examples                       # pick skills and agents interactively
+npx skills add code0xff/1gateway-examples --skill base-token-risk
+```
+
+Each `skills/<name>/` folder is also a ClawHub/OpenClaw skill (`SKILL.md` with `metadata.openclaw`).
+
 ## Quick start
 
 ```bash
