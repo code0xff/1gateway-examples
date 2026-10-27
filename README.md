@@ -10,11 +10,12 @@ Failed calls (any 4xx/5xx) are never charged.
 
 ## Agent skills (skills.sh / ClawHub format)
 
-Three ready-made skills in [`skills/`](skills). Each is remote, no install needed: the skill only tells the agent
+Four ready-made skills in [`skills/`](skills). Each is remote, no install needed: the skill only tells the agent
 how to call the hosted API with an x402 client (`npx agentcash fetch`, `npx awal x402 pay` or `@x402/fetch`).
 
 | Skill | What | Price (USDC/call) |
 |---|---|---|
+| [`1gateway-korea-data`](skills/1gateway-korea-data/SKILL.md) | AgentCash-first pack: KR apt/holidays/company + HWP + web read + doc extract (hardcoded fetch URLs) | $0.002–$0.009 |
 | [`hwp-remote-to-markdown`](skills/hwp-remote-to-markdown/SKILL.md) | HWP/HWPX (also PDF, DOCX, HTML) to Markdown | $0.0027–$0.009 |
 | [`korea-data`](skills/korea-data/SKILL.md) | Apartment trades, holidays, weather, trade stats, Bank of Korea ECOS | $0.0027–$0.0045 |
 | [`base-token-risk`](skills/base-token-risk/SKILL.md) | Base ERC-20 token safety check: honeypot and rug-pull signals | $0.009 |
