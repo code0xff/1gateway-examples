@@ -5,11 +5,14 @@
   "description": "Examples for 1gateway (https://1gateway.dev): pay-per-call APIs for AI agents over x402 (USDC on Base).",
   "license": "MIT",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "quote": "tsx examples/quote.ts",
     "korea-data": "tsx examples/korea-data.ts",
     "hwp-to-markdown": "tsx examples/hwp-to-markdown.ts",
+    "time-and-satellite": "tsx examples/time-and-satellite.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
