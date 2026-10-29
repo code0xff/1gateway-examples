@@ -41,6 +41,7 @@ cp .env.example .env   # set PRIVATE_KEY, then:
 node --env-file=.env --import tsx examples/korea-data.ts
 node --env-file=.env --import tsx examples/hwp-to-markdown.ts ./report.hwp
 node --env-file=.env --import tsx examples/time-and-satellite.ts
+node --env-file=.env --import tsx examples/trading-data.ts
 ```
 
 The client in [`examples/client.ts`](examples/client.ts) uses `@x402/fetch` + `@x402/evm`: on a 402 it signs a
@@ -68,6 +69,7 @@ console.log(await res.json());
 | [`examples/korea-data.ts`](examples/korea-data.ts) | Korean holidays, Gangnam apartment trades, Seoul weather, trade pulse |
 | [`examples/hwp-to-markdown.ts`](examples/hwp-to-markdown.ts) | HWP/HWPX (Hancom) file or URL → Markdown |
 | [`examples/time-and-satellite.ts`](examples/time-and-satellite.ts) | Time-zone work-hours overlap, business days (KR/US/…), Sentinel-2 satellite compare & trend |
+| [`examples/trading-data.ts`](examples/trading-data.ts) | Hyperliquid funding history & extremes/OI movers, batch Base/Solana DEX prices with price impact |
 | [`mcp/claude-code.md`](mcp/claude-code.md) | Add the remote MCP server to Claude Code |
 | [`mcp/cursor.md`](mcp/cursor.md) | Add the remote MCP server to Cursor |
 

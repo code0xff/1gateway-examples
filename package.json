@@ -13,6 +13,7 @@
     "korea-data": "tsx examples/korea-data.ts",
     "hwp-to-markdown": "tsx examples/hwp-to-markdown.ts",
     "time-and-satellite": "tsx examples/time-and-satellite.ts",
+    "trading-data": "tsx examples/trading-data.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
