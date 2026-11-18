@@ -36,7 +36,7 @@ npm install
 # 1) No wallet: see the price quote (HTTP 402 + PAYMENT-REQUIRED header)
 npm run quote -- "/v1/calendar/holidays?year=2026"
 
-# 2) Pay per call: a Base wallet with a little USDC (use a dedicated low-balance wallet)
+# 2) Pay per call: a wallet with a little USDC on Base (this client pays on Base; use a dedicated low-balance wallet)
 cp .env.example .env   # set PRIVATE_KEY, then:
 node --env-file=.env --import tsx examples/korea-data.ts
 node --env-file=.env --import tsx examples/hwp-to-markdown.ts ./report.hwp
@@ -113,8 +113,29 @@ Prices as of 2026-11-18 (live `openapi.json`), USDC per call. The 402 quote is a
 | `/v1/onchain/tx/receipt` | EVM transaction receipt (Base, Ethereum, Arbitrum, Monad): status, decoded ERC-20 transfers, fee, confirmations | $0.0045 |
 | `/v1/convert/markdown` | Document to Markdown: web pages, PDF, DOCX and Korean HWP/HWPX | $0.0027–$0.009 |
 
+## Agent cloud
+
+Tools an agent uses while it works: storage, scheduling, people and code. Files, key-value data and memories belong to
+the paying wallet, so those routes need an EVM payment (Base, Monad, Polygon or Arbitrum); email does too, because the
+recipient agrees to mail from one wallet. Timers, approvals, inboxes and webhooks return a secret instead, and reading
+their status with it is free.
+
+| Path | What | Price |
+|---|---|---|
+| `/v1/files/upload` | Store a file (PNG, JPEG, WebP, PDF, JSON, text) for up to 7 days; private or public link | $0.006+ by size |
+| `/v1/files/info`, `list`, `sign`, `visibility`, `delete` | Manage your files: details, list, signed download URL, public/private, delete | $0.002 each |
+| `/v1/agent/kv/put`, `get`, `list`, `delete`, `touch` | Key-value storage per wallet, TTL 1-90 days | $0.002–$0.0036+ |
+| `/v1/agent/memory/put`, `search`, `delete` | Notes the wallet saves and finds again by meaning (vector search) | $0.002–$0.004 |
+| `/v1/agent/timer` | Signed webhook callback later: once, every N seconds, or on a cron schedule in any time zone | $0.003; $0.002 per callback when repeating |
+| `/v1/agent/approval` | Ask a person to approve, pick an option or fill in a short form; answer by webhook or polling | $0.01 |
+| `/v1/agent/email/send` | Email a person who agreed to mail from your wallet (consent request first, one-click unsubscribe) | $0.02 |
+| `/v1/agent/inbox` | A receive-only email address for 24 h (sign-up mail; codes and links pulled out) | $0.01 |
+| `/v1/agent/webhook` | A public URL that stores incoming requests (webhooks, callbacks) for 1-168 h | $0.01 |
+| `/v1/agent/sandbox/run` | Run a short Python or Node.js program in a fresh container (no internet, 30 s); stdout and output files back | $0.005 |
+
 ## Notes
 
-- Payments settle on Base mainnet through the Coinbase CDP facilitator, only after a 2xx response.
+- The API accepts USDC on Base, Monad, Polygon, Arbitrum and Solana at the same price; every 402 lists each option.
+  Payments settle through the Coinbase CDP facilitator, only after a 2xx response.
 - Never commit a private key. `.env` is git-ignored; use a wallet that holds only what you plan to spend.
 - License: MIT.
