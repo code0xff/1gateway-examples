@@ -1,7 +1,7 @@
 # 1gateway examples
 
 Examples for [1gateway](https://1gateway.dev): pay-per-call data APIs for AI agents. Each request is paid with
-USDC on Base over [x402](https://x402.org) (HTTP 402). No signup, no API key. Responses are clean English JSON.
+USDC over [x402](https://x402.org) (HTTP 402), on any network listed in the 402 quote. No signup, no API key. Responses are clean English JSON.
 Failed calls (any 4xx/5xx) are never charged.
 
 - Agent guide (every route, params, example, response shape): https://1gateway.dev/agents.md
@@ -90,7 +90,7 @@ returns a payment-required result with the price and charges nothing.
 
 ## Endpoints and prices
 
-Prices as of 2026-10-17, USDC per call. The 402 quote is always authoritative; see `/agents.md` for parameters.
+Prices as of 2026-11-18 (live `openapi.json`), USDC per call. The 402 quote is always authoritative; see `/agents.md` for parameters.
 
 | Path | What | Price |
 |---|---|---|
@@ -107,10 +107,10 @@ Prices as of 2026-10-17, USDC per call. The 402 quote is always authoritative; s
 | `/v1/fx/rates` | FX reference rates (ECB): 30 currencies incl. KRW, any base, conversion, last 90 days | $0.002 |
 | `/v1/time/convert` | Time-zone conversion: one instant in many zones, DST-aware, offsets, business hours | $0.002 |
 | `/v1/web/site-profile` | Site profile: page metadata + security headers + robots/llms.txt + DNS, mail auth and domain age in one call | $0.009 |
-| `/v1/onchain/base/token-risk` | Base token / contract risk signals: proxy, owner, privileged functions, pools, buy/sell simulation | $0.009 |
-| `/v1/onchain/base/balances` | Base wallet balances: ETH + many ERC-20s in one call, with nonce and contract flag | $0.002 |
-| `/v1/onchain/base/token-info` | Base ERC-20 token info: name, symbol, decimals, total supply, optional holder balance and allowance | $0.002 |
-| `/v1/onchain/base/tx` | Base transaction status with decoded ERC-20 transfers, fee and confirmations | $0.0045 |
+| `/v1/onchain/token/risk` | Token risk: honeypot and rug-pull signals (Base, Ethereum, Arbitrum; buy/sell simulation, contract risk signals) | $0.009 |
+| `/v1/onchain/balances` | Wallet balances (Base, Ethereum, Arbitrum, Monad): gas token + many ERC-20s in one call, with nonce and contract flag | $0.002 |
+| `/v1/onchain/token-info` | ERC-20 token info (Base, Ethereum, Arbitrum, Monad): name, symbol, decimals, total supply, optional holder balance and allowance | $0.002 |
+| `/v1/onchain/tx/receipt` | EVM transaction receipt (Base, Ethereum, Arbitrum, Monad): status, decoded ERC-20 transfers, fee, confirmations | $0.0045 |
 | `/v1/convert/markdown` | Document to Markdown: web pages, PDF, DOCX and Korean HWP/HWPX | $0.0027–$0.009 |
 
 ## Notes

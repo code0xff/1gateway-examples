@@ -1,6 +1,6 @@
 ---
 name: korea-data
-description: "South Korean public data as clean English JSON through the remote 1gateway API, paid per call with x402 (USDC on Base): apartment sale transactions and district price summaries (MOLIT), public holidays (KASI), short-term weather forecasts (KMA), trade statistics (Korea Customs export flash, HS-code trade, trade pulse) and Bank of Korea ECOS series. Remote, no install needed. Use when an agent needs Korean real estate, holiday, weather, trade or macro data without a Korean API key."
+description: "South Korean public data as clean English JSON through the remote 1gateway API, paid per call with x402 (USDC): apartment sale transactions and district price summaries (MOLIT), public holidays (KASI), short-term weather forecasts (KMA), trade statistics (Korea Customs export flash, HS-code trade, trade pulse) and Bank of Korea ECOS series. Remote, no install needed. Use when an agent needs Korean real estate, holiday, weather, trade or macro data without a Korean API key."
 license: MIT
 homepage: https://1gateway.dev
 metadata:
@@ -39,7 +39,7 @@ answer in Korean XML) and returns normalized English JSON with Korean names kept
 ## How to call (remote, no install needed)
 
 Nothing to install or host: this skill calls the remote 1gateway API over HTTPS. Each call is paid per request
-with USDC on Base through the x402 protocol (HTTP 402). No signup, no API key.
+with USDC through the x402 protocol (HTTP 402), on any network listed in the 402 quote. No signup, no API key.
 
 1. Optional, free: see the exact price. An unpaid request returns `HTTP 402` with a `PAYMENT-REQUIRED` header
    (base64 JSON quote). `curl -i "https://1gateway.dev/v1/calendar/holidays?year=2026"`
@@ -164,4 +164,4 @@ period returns 404 and is not charged.
 - Every route, parameter and response shape: https://1gateway.dev/agents.md · OpenAPI: https://1gateway.dev/openapi.json
 - Remote MCP server (same tools): `https://1gateway.dev/mcp` (tools/list free, tools/call paid with x402)
 - Status and uptime: https://1gateway.dev/status
-- Prices here are from the 1gateway catalog as of 2026-10-17; the 402 quote is always authoritative.
+- Prices here are from the live 1gateway openapi.json as of 2026-11-18; the 402 quote is always authoritative.

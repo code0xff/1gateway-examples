@@ -34,7 +34,7 @@ npx agentcash origins add https://1gateway.dev
 npx agentcash discover https://1gateway.dev   # optional: lists paid routes + prices
 ```
 
-## Calls (prices from live openapi.json, 2026-10-27; USDC on Base or Solana)
+## Calls (prices from live openapi.json, 2026-11-18; USDC on any network listed in the 402 quote)
 
 | Task | Command | Price |
 |---|---|---|

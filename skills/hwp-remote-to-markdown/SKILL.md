@@ -1,6 +1,6 @@
 ---
 name: hwp-remote-to-markdown
-description: "Convert Korean HWP/HWPX (Hancom Office) documents, and also PDF, DOCX and web pages, to clean Markdown through the remote 1gateway API, paid per call with x402 (USDC on Base). Remote, no install needed. Use when a user or agent has a .hwp/.hwpx file or URL (Korean government notices, forms, reports) and needs its text as Markdown."
+description: "Convert Korean HWP/HWPX (Hancom Office) documents, and also PDF, DOCX and web pages, to clean Markdown through the remote 1gateway API, paid per call with x402 (USDC). Remote, no install needed. Use when a user or agent has a .hwp/.hwpx file or URL (Korean government notices, forms, reports) and needs its text as Markdown."
 license: MIT
 homepage: https://1gateway.dev
 metadata:
@@ -54,7 +54,7 @@ Response 200: JSON with `markdown`, `title`, `sourceType`, `priceTier`, `bytes`,
 ## How to call (remote, no install needed)
 
 Nothing to install or host: this skill calls the remote 1gateway API over HTTPS. Each call is paid per request
-with USDC on Base through the x402 protocol (HTTP 402). No signup, no API key.
+with USDC through the x402 protocol (HTTP 402), on any network listed in the 402 quote. No signup, no API key.
 
 1. Optional, free: see the exact price. An unpaid request returns `HTTP 402` with a `PAYMENT-REQUIRED` header
    (base64 JSON quote). `curl -i "https://1gateway.dev/v1/convert/markdown?url=<URL-encoded public .hwp/.hwpx link>"`
@@ -97,4 +97,4 @@ const { markdown } = await res.json();
 - Every route, parameter and response shape: https://1gateway.dev/agents.md · OpenAPI: https://1gateway.dev/openapi.json
 - Remote MCP server (same tools): `https://1gateway.dev/mcp` (tools/list free, tools/call paid with x402)
 - Status and uptime: https://1gateway.dev/status
-- Prices here are from the 1gateway catalog as of 2026-10-17; the 402 quote is always authoritative.
+- Prices here are from the live 1gateway openapi.json as of 2026-11-18; the 402 quote is always authoritative.
